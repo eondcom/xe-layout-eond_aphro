@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.2">
+    <title xml:lang="ko">이온디 Acumulo</title>
+	<title xml:lang="en">Eond Acumulo</title>
+    <description xml:lang="ko">
+	# 이온디 Acumulo ver.0.1. (마지막 업데이트일 : 2013년 8월 1일)
+	# 배포처 : http://eond.com
+	# 미리보기 : http://eond.com/eond_acumulo
+	# 메뉴얼 : http://code.google.com/p/eond/wiki/eond_acumulo
+	# 피드백 : http://code.google.com/p/eond/issues/list
+    </description>
+	<description xml:lang="en">
+	# Website : http://eond.com
+	# Manual : http://code.google.com/p/eond/wiki/eond_acumulo
+	# Feedback : http://code.google.com/p/eond/issues/list
+    </description>
+    <version>0.5</version>
+    <date>2013-08-01</date>
+	<link>http://eond.com/</link>
+    <author email_address="eond@eond.com" link="http://eond.com">
+        <name>이온디 팀</name>
+    </author>
+    <menus>
+		<menu name="gnb" maxdepth="3" default="true">
+            <title xml:lang="ko">글로벌 메뉴</title><title xml:lang="en">Globar Navigation Bar</title>
+        </menu>
+		<menu name="fnb">
+			<title xml:lang="ko">푸터 메뉴</title><title xml:lang="en">Footer Navigation Bar</title>
+			<maxdepth>1</maxdepth>
+		</menu>
+	</menus>
+	
+    <extra_vars>
+	<group>
+	<title xml:lang="ko">레이아웃 설정</title><title xml:lang="en">Layout Configuration</title>
+		
+		<var name="agreement" type="checkbox"><title>안내</title>
+			<options><title xml:lang="ko">아래 주의사항을 읽고 사용에 동의합니다.</title><title xml:lang="en">I Agree.</title></options>
+			<description>[!] 레이아웃 설정과 위젯 설정 기능은 본 레이아웃의 유료 버전의 기능임을 인지하였습니다. 이온디 Imgur 레이아웃을 사용하는 자는 해당 소스를 사용자 임의대로 수정하지 아니함에 동의합니다. </description>
+		</var>
+
+		<var name="adminbar" type="checkbox"><title>어드민바</title>
+			<options value="y"><title xml:lang="ko">감추기</title><title xml:lang="en">view</title></options>
+			<description>어드민바는 프레임 상단에 나타나는 기본 바입니다.</description>
+		</var>
+		<var name="layout_position" type="select">
+            <title xml:lang="ko">레이아웃 구조</title><title xml:lang="en">Layout position</title>
+			<options value="c"><title xml:lang="ko">본문만</title><title xml:lang="en">Content Only</title></options>
+			<options value="ce"><title xml:lang="ko">본문+칼럼</title><title xml:lang="en">Content + Column　</title></options>
+			<options value="ec"><title xml:lang="ko">칼럼+본문</title><title xml:lang="en">Column + Content　</title></options>
+        </var>
+		<var name="background_image" type="image">
+			<title xml:lang="ko">배경 이미지</title><title xml:lang="en">Background Image</title>
+			<description>배경이미지를 설정합니다.</description>
+		</var>
+		<var name="con_width" type="text">
+            <title xml:lang="ko">컨텐츠 영역 너비</title><title xml:lang="en">Content Width</title>
+            <description>컨텐츠 너비에 따라 전체 너비가 설정됩니다. 칼럼 너비는 수정 불가한 고정 너비입니다.</description>
+        </var>
+	</group>
+	<group>
+	<title xml:lang="ko">위젯 설정</title><title xml:lang="en">Widgets Setting</title>
+		<var name="agreement2" type="checkbox"><title>안내</title>
+			<options><title xml:lang="ko">아래 주의사항을 읽고 사용에 동의합니다.</title><title xml:lang="en">I Agree.</title></options>
+			<description>[!] 동작하는 기능은 저작권 표시, 배너 태그와 페이스북 좋아요, 트위터 위젯만 현재 작동합니다. 다른 기능은 추가 요청 시 작업해드립니다. 레이아웃 설정과 위젯 설정 기능은 본 레이아웃의 유료 버전의 기능임을 인지하였습니다. 이온디 Imgur 레이아웃을 사용하는 자는 해당 소스를 사용자 임의대로 수정하지 아니함에 동의합니다. </description>
+		</var>
+		<var name="view_lst" type="radio"><title xml:lang="ko">최근글 위젯 출력</title><title xml:lang="en">Display : Recently Articles</title>
+		<options value="on"><title xml:lang="ko">ON　</title><title xml:lang="en">ON　</title></options><options value="off"><title xml:lang="ko">OFF(기본값)　</title><title xml:lang="en">OFF(Default)　</title></options></var>
+		<var name="view_cmt" type="radio"><title xml:lang="ko">최근 댓글 위젯 출력</title><title xml:lang="en">Display : Comments</title>
+		<options value="on"><title xml:lang="ko">ON(기본값)　</title><title xml:lang="en">ON(Default)　</title></options><options value="off"><title xml:lang="ko">OFF　</title><title xml:lang="en">OFF　</title></options></var>
+		<var name="tag" type="radio">
+		<title xml:lang="ko">태그 위젯</title><title xml:lang="en">Tag Widget</title>
+		<options value="on" checked="checked"><title xml:lang="ko">ON　</title><title xml:lang="en">ON　</title></options><options value="off"><title xml:lang="ko">OFF(기본값)　</title><title xml:lang="en">OFF(Default)　</title></options>
+		</var>
+		<var name="tag_module" type="text">
+		<title xml:lang="ko">태그 위젯 선택 모듈 번호</title><title xml:lang="en">Tag Widget Module Number</title>
+		<description>태그 위젯으로 나타나는 게시판의 모듈 번호를 입력하세요.</description>
+		</var>
+		<var name="best" type="text">
+		<title xml:lang="ko">베스트글</title><title xml:lang="en">Tag Widget Module Number</title>
+		<description>베스트 게시판의 모듈 번호를 입력하세요. '게시판 관리 > 편집 > 설정'에서 모듈 번호를 알 수 있습니다.</description>
+		</var>
+        <var name="adsense" type="textarea">
+            <title xml:lang="ko">배너 영역 태그</title><title xml:lang="en">Top Widget Title</title>
+			<description>배너 영역의 태그를 입력해주세요. (기본 사이즈 300px*250px)</description>
+        </var>
+		<var name="bn_right" type="textarea">
+            <title xml:lang="ko">배너 영역 태그(오른쪽)</title><title xml:lang="en">Top Widget Title</title>
+			<description>배너 영역의 태그를 입력해주세요. (기본 사이즈 120px*240px)</description>
+        </var>
+		<var name="facebook" type="text">
+			<title xml:lang="ko">페이스북 좋아요 URL</title><title xml:lang="en">Content Widget Title</title>
+			<description>페이스북에 좋아요를 설정할 주소를 입력해주세요. (기본값 http://eond.com)</description>
+		</var>
+		<var name="twitter" type="textarea">
+			<title xml:lang="ko">트위터 위젯</title><title xml:lang="en">Twitter Widget</title>
+			<description>트위터 위젯 만들기 https://twitter.com/settings/widgets/new</description>
+		</var>
+		<var name="address" type="text">
+			<title xml:lang="ko">저작권 표시</title><title xml:lang="en">Copyright</title>
+			<description>저작권 이름을 표시해주세요.</description>
+		</var>
+		<var name="wdg_contentT" type="textarea"><title xml:lang="ko">본문 상단 위젯</title><title xml:lang="en">Top Content Widget Code</title>
+		<description>본문 영역의 상단에 위치하는 커스텀 위젯입니다.</description></var>
+		<var name="wdg_contentB" type="textarea"><title xml:lang="ko">본문 하단 위젯</title><title xml:lang="en">Bottom Content Widget Code</title>
+		<description>본문 영역의 하단에 위치하는 커스텀 위젯입니다.</description></var>
+	</group>
+	<group>
+	<title xml:lang="ko">홈페이지 기본정보(*)</title><title xml:lang="en">Website Information</title>
+        <var name="index_url" type="text">
+            <title xml:lang="ko">홈페이지 URL</title><title xml:lang="en">Website URL</title>
+            <description>로고를 클릭시에 이동할 홈페이지 URL을 입력해 주세요.</description>
+		</var>
+		<var name="logo_title" type="text">
+			<title xml:lang="ko">홈페이지 이름</title><title xml:lang="en">Website Title</title>
+			<description>홈페이지 이름을 입력하세요. 로고 이미지에 마우스를 올렸을 때 표시됩니다.</description>
+		</var>
+		<var name="logo_image" type="image">
+            <title xml:lang="ko">홈페이지 로고</title><title xml:lang="en">Website Logo</title>
+            <description>로고 파일을 업로드해주세요. (기본 사이즈 92px*36px, height값 36픽셀 이하 권장)</description>
+        </var>
+		<var name="slogan" type="textarea">
+			<title xml:lang="ko">홈페이지 슬로건</title><title xml:lang="en">Website Slogan</title>
+			<description>본문 상단에 출력되는 홍보 문구를 입력해주세요. HTML 코드도 작성 가능합니다.(예 심심한 하루N [b]드립조[/b] - 개드립, 짤방 , [] 대신 꺽쇠 괄호 사용할 것)</description>
+		</var>
+	</group>
+
+	</extra_vars>
+
+</layout>

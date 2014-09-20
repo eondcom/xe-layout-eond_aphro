@@ -1,0 +1,551 @@
+<!--// 세팅-->
+{Context::set("admin_bar", "false")}
+{@$conf=$layout_info;}
+{@
+Context::addMetaTag('X-UA-Compatible', 'IE=edge,chrome=1', true);﻿
+}
+<!--
+{@
+Context::addHtmlHeader('<meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge">');
+}
+-->
+<!--// 스타일시트-->
+<load target="css/style.css" />
+<load target="css/base.css" />
+
+<!--// 스크립트-->
+<load target="js/layout.js" type="body" />
+<load target="js/hotkey.js" type="body" />
+<!--// 세팅-->
+{Context::set("admin_bar", "false")}
+{@
+$li=$layout_info;
+$conf=$layout_info;
+}
+<!--// admin bar 사용여부-->
+<block cond="$li->admin_bar_use != 'yes' ">
+{@ Context::set("admin_bar","false"); }
+</block>
+
+
+<!-- ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+												 사이트 시작
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+
+<!--// 레이아웃-->
+<!-- [S] 바디 -->
+<div class="sitebar">
+	<nav class="snb clearfix">
+		<ul>
+			<!--@foreach($snb->list as $key => $val)-->
+			<!--@if($val['link'])-->
+				<!--@if($val['selected'])-->
+				{@ $menu_1st = $val }
+				<!--@end-->
+				<li <!--@if($val['selected'])-->class="on"<!--@end-->><a href="{$val['href']}" <!--@if($val['open_window']=='Y')-->onclick="window.open(this.href);return false;"<!--@end-->><span>{$val['link']}</span></a></li>
+			<!--@end-->
+			<!--@end-->
+		</ul>
+	</nav>
+</div>
+<div class="container">
+	<!-- ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+																상단
+	──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+
+	<!-- [시작] 헤더그룹 -->
+
+	<!--  [시작] 헤더-->
+	<header class="header">
+
+		<div id="hgroup" class="clearfix">
+			<h1>
+				<a href="<!--@if($conf->url)-->{$conf->url}<!--@else-->{getUrl()}<!--@end-->">
+				<!--@if($conf->logo)--><img src="{$conf->logo}" alt="<!--@if($conf->site)-->{$conf->site}<!--@else-->이온디<!--@end-->" title="{$conf->site}"><!--@else--><img src="./img/logo_eond.png" alt="이온디" /><!--@end-->
+				</a>
+			</h1>
+			<div class="ad_header">
+				<script type="text/javascript"><!--
+				google_ad_client = "ca-pub-7200623708996327";
+				/* 468x60, 작성됨 07. 11. 12 */
+				google_ad_slot = "1961887408";
+				google_ad_width = 468;
+				google_ad_height = 60;
+				//-->
+				</script>
+				<script type="text/javascript"
+				src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+				</script>
+			</div>
+		</div><!--// hgroup -->
+
+
+<div id="gnb_wrp" class="clear">
+
+
+
+
+
+		<!-- [시작] 메뉴-->
+		<nav id="globalheader">
+		<ul id="globalnav">
+			{@$_idx = 1}
+			<li loop="$main_menu->list=>$key1,$val1" cond="$val1['link']" class="li1<!--@if($_idx > 4)--> m_li1_tg<!--@end--><!--@if($layout_info->forum)--><!--@if($_idx == '{$layout_info->forum}')--> forum<!--@end--><!--@end-->">
+				<a class="a1 {$_colorset_list[$_idx]}<!--@if($val1['selected'])--> on<!--@end-->" href="{$val1['href']}" target="_blank"|cond="$val1['open_window']=='Y'">
+					<span class="hover"></span><span class="border"></span><span class="text">{$val1['link']}</span>
+				</a>
+					<block cond="$val1['list']">
+					<div class="ul2-wrap">
+						<div class="ul2box">
+							<div class="ul2">
+								<ul loop="$val1['list']=>$key2,$val2" cond="$val2['link']" class="l2-wrap">
+								<li class="li2<!--@if($val2['selected'])--> on<!--@end-->">
+
+									<a class="a2" href="{$val2['href']}" target="_blank"|cond="$val2['open_window']=='Y'">{$val2['link']}<b cond="$val2['list']" style="display: none;">+</b></a>
+
+									<ul cond="$val2['list']" class="ul3">
+										<li class="li3" loop="$val2['list']=>$key3,$val3" cond="$val3['link']"><a class="a3<!--@if($val3['selected'])--> on<!--@end-->" href="{$val3['href']}" target="_blank"|cond="$val3['open_window']=='Y'">{$val3['link']}</a></li>
+									</ul>
+
+								</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					</block>
+
+			{@$_idx++}
+			</li>
+        </ul>
+		</nav>
+
+
+
+
+		<!--// [끝] 메뉴-->
+
+		<!--s2: 애드센스 상단-->
+		<article class="ad_side">
+		<script type="text/javascript"><!--
+		google_ad_client = "ca-pub-7200623708996327";
+		/* 120x600, 작성됨 10. 2. 22 */
+		google_ad_slot = "5804260328";
+		google_ad_width = 120;
+		google_ad_height = 600;
+		//-->
+		</script>
+		<script type="text/javascript"
+		src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+		</script>
+		</article><!--// [끝] 애드센스 상단-->
+
+		<div class="clearfix">
+		<!-- [시작] 검색 -->
+		<div class="search">
+		<form action="{getUrl()}" method="post" class="iSearch">
+			<input type="hidden" name="vid" value="{$vid}" cond="$vid" />
+			<input type="hidden" name="mid" value="{$mid}" />
+			<input type="hidden" name="act" value="IS" />
+			<input type="hidden" name="search_target" value="title_content" />
+			<input name="is_keyword" type="text" class="iText" title="검색어를 입력해주세요" />
+			<input type="image" src="./img/icon_search.png" alt="{$lang->cmd_search}" class="submit" />
+		</form>
+		</div>
+		<!--// [끝] 검색 -->
+
+<!--//로그인-->
+<style>
+/*
+.login {position: absolute;top:0;right:0;}
+.login input,label {display:inline;}
+.login .itx {width:150px;}
+*/
+</style>
+<div class="login" style="display:none;">
+
+<form action="./" method="post" ruleset="@login">
+	<fieldset>
+		<input type="hidden" name="act" value="procMemberLogin" />
+		<input type="hidden" name="success_return_url" value="{getRequestUriByServerEnviroment()}" />
+		<input type="text" name="user_id" id="uid" class="itx" title="ID" />
+		<input type="password" name="password" id="upw" class="itx" title="Password" />
+		<input type="checkbox" name="keep_signed" id="keepid_opt" value="Y" onclick="if(this.checked) return confirm('{$lang->about_keep_signed}');" />
+		<label for="keepid_opt">{$lang->keep_signed}</label>
+			<input type="submit" value="{$lang->cmd_login}" class="login_btn" />
+
+			<a href="{getUrl('act','dispMemberSignUpForm')}" class="join"><strong>{$lang->cmd_signup}</strong></a> | <a href="{getUrl('act','dispMemberFindAccount')}" class="find">{$lang->cmd_find_member_account}</a> | <a href="{getUrl('act','dispMemberResendAuthMail')}" class="find">{$lang->cmd_resend_auth_mail}</a>
+
+	</fieldset>
+</form>
+</block>
+<a cond="$is_logged" href="{getUrl('act','dispMemberLogout')}" class="login_btn"><strong>{$lang->cmd_logout}</strong></a>
+<a cond="!$is_logged" href="{getUrl('act','dispMemberSignUpForm')}" class="login_btn">{$lang->signup}</a>
+</div><!--//로그인-->
+
+		<!-- [시작] 로그인 -->
+		<div class="login">
+		{@
+		$member_config = MemberModel::getMemberConfig();
+		$identifierForm->name = $member_config->identifier;
+		}
+		<!--%import("filter/login.xml")-->
+		<!--@if(!$is_logged)-->
+		<a href="{getUrl('act','dispMemberSignUpForm')}" class="join"><img src="./img/ico_join.png" alt="{$lang->cmd_signup}" title="{$lang->cmd_signup}"></a>
+		<a href="{getUrl('act','dispMemberLoginForm')}"><img src="./img/ico_login.png" alt="{$lang->cmd_login}" title="로그인하기" class="login_btn" /></a>
+
+
+		<form action="./" method="post" ruleset="@login" style="display: none;">
+		<fieldset>
+		<legend style="display: none;"></legend>
+			<input type="hidden" name="act" value="procMemberLogin" />
+			<input type="hidden" name="success_return_url" value="{getRequestUriByServerEnviroment()}" />
+			<input type="text" name="user_id" id="uid" class="itx" title="ID" />
+			<input type="password" name="password" id="upw" class="itx" title="Password" />
+			<input type="checkbox" name="keep_signed" id="keepid_opt" value="Y" onclick="if(this.checked) return confirm('{$lang->about_keep_signed}');" />
+
+			<a href="{getUrl('act','dispMemberFindAccount')}" class="find">{$lang->cmd_find_member_account}</a> | <a href="{getUrl('act','dispMemberResendAuthMail')}" class="find">{$lang->cmd_resend_auth_mail}</a>
+		</fieldset>
+		</form>
+		<!--@else-->
+
+
+
+		<!--// 프로필 -->
+			<div cond="$is_logged" class="myinfo">
+
+				<ul>
+				<li class="user">
+					<a href="#message" class="tg_btn"><img src="./img/ico_bell.png" alt="alert" style="vertical-align: middle; margin-top: -3px; margin-right: -3px; padding: 0;" /></a>
+					<div id="message" class="tg_cnt">
+<div class="top">
+<h2>쪽지함</h2><div class="tg_close" title="Close this layer"><img src="./img/btn_close_pop.gif" alt="닫기" title="닫기"></div>
+</div>
+<load target="js/communication.js" />
+<block cond="$is_logged">
+{@
+$oDB = &DB::getInstance();
+$query = $oDB->_query('select * from xe_member_message where receiver_srl = '.$logged_info->member_srl.' AND message_type = "R" ORDER BY  regdate DESC limit 0, 5');
+$result = $oDB->_fetch($query);
+$output = executeQueryArray('addons.message_alarm.getMessageCount', $aobj);
+}
+<script cond="count($output->data) && !Mobile::isMobileCheckByAgent()">
+jQuery(function($){$(".navbar a").hover(function(){$("#message_list>a").tooltip('hide');}).tooltip({placement:"bottom",trigger:"manual",title:"{count($output->data)}{$lang->tb_not_readed_message}"}).delay(500).queue(function(){$("#message_list>a").tooltip('show');}).delay(5000).queue(function(){$("#message_list>a").tooltip('hide');})});
+</script>
+</block>
+<!--s:MessageBox-->
+<div class="header" style="padding: 0; width: 100%;">
+
+	<ul class="dropdown-menu" style="min-width:240px;">
+	<!--@if(is_array($result)==true)-->
+
+		<!--@foreach($result as $key=>$val)-->
+		{@
+		$oMemberModel =& getModel('member');
+		$member_info = $oMemberModel->getMemberInfoByMemberSrl($val->sender_srl);
+		}
+		<li class="readed"><!-- /* padding-bottom: 10px; width: 100%;border: 0px solid red;*/ -->
+		<a href="{getURL('act','dispCommunicationMessages','message_srl',$val->message_srl)}" class="popover-left" title="{strip_tags($val->title)}" data-content="{iconv_substr(strip_tags($val->content),0,100,'UTF-8')}"  style="outline-style:none">
+
+			<div class="photo" style="float: left; width: 38px; height: 38px; overflow: hidden;border: 1px solid #EEE;">
+			<!--@if($member_info->profile_image->src)-->
+			<img src="{$member_info->profile_image->src}" width="38px" height="38px" class="img-polaroid profile_img"  alt="프로필 이미지" />
+			<!--@else-->
+			<img src="./img/profile.gif" class="img-polaroid profile_img" alt="프로필 이미지" />
+			<!--@end-->
+			</div>
+
+			<div class="info" style="float: left; width: 150px; border: 0px solid red;">
+
+					<span class="nickname">
+					{$member_info->nick_name}
+					</span>
+					<span class="title" style="font-weight: normal;">
+					{strip_tags($val->title)}...
+					</span>
+
+			</div>
+			<div class="message_reply" style="vertical-align: middle;line-height: 50px;">
+			<img src="{$tpl_path}img/ico_reply.png" onclick="doSendMessage('{$member_info->member_srl}','{$val->message_srl}');return false;">
+			<!--<input type="image" src="{$tpl_path}img/ico_reply.png" ></button> {$lang->cmd_reply_message} -->
+			</div>
+
+		</a>
+		</li>
+		<!--@end-->
+
+	<!--@else-->
+		{@
+		$oMemberModel =& getModel('member');
+		$member_info = $oMemberModel->getMemberInfoByMemberSrl($result->sender_srl);
+		}
+		<li>
+		<a href="{getURL('act','dispCommunicationMessages','message_srl',$result->message_srl)}" class="popover-left readed" rel="popover" title="{strip_tags($result->title)}" data-content="{substr(strip_tags($result->content),0,100)}" >
+			<!--@if($member_info->profile_image->src)-->
+			<img src="{$member_info->profile_image->src}" class="img-polaroid profile_img" />1
+			<!--@else-->
+			<img src="./img/profile.gif" class="img-polaroid profile_img" />2
+			<!--@end-->
+		<span class="content">
+		<span class="nickname">
+		{$member_info->nick_name}
+		</span>
+		<span class="title">
+		{strip_tags($result->title)}
+		</span>
+		</span>
+		<span class="clear" style="display:block"></span>
+		<button type="button" onclick="doSendMessage('{$member_info->member_srl}','{$val->message_srl}');return false;" class="btn btn-mini reply_message"><i class="icon-share-alt"></i> {$lang->cmd_reply_message}2</button>
+		<button type="button" class="btn btn-mini"><i class="icon-eye-open"></i> {$lang->tb_more}1</button>
+		<span class="clear" style="display:block"></span>
+		</a>
+		</li>
+	<!--@end-->
+	</ul>
+
+</div>
+<!-- e:MessageBox-->
+
+<div class="footer"><ul><li><a href="{getURL('act','dispCommunicationMessages')}">쪽지함</a></li></ul></div>
+
+					</div>
+
+					<a href="#profile" class="tg_btn">
+					<span class="nick">{htmlspecialchars($logged_info->nick_name)}</span>
+					<img src="<!--@if($logged_info->profile_image)-->{$logged_info->profile_image->src}<!--@else-->./img/bg_profile.jpg<!--@end-->" style="width: 20px; height: 20px; vertical-align: middle; border: 1px solid #EEEEEE;" alt="회원 이미지" />
+					<img src="./img/arrow_down.png" alt="더보기" title="회원정보 더보기">
+					</a>
+					<!-- [시작] 내정보 -->
+					<div id="profile" class="tg_cnt">
+						<div class="top">
+							<h2>회원정보</h2><div class="tg_close" title="Close this layer"><img src="./img/btn_close_pop.gif" alt="닫기" title="회원정보창 닫기"></div>
+						</div>
+						<div class="header">
+							<div class="photo">
+								<img src="<!--@if($logged_info->profile_image)-->{$logged_info->profile_image->src}<!--@else-->./img/bg_profile.jpg<!--@end-->" style="width: 80px; height: 80px; border: 1px solid #EEEEEE;" />
+							</div>
+							<div class="info">
+								<ul>
+									<li><b>{htmlspecialchars($logged_info->nick_name)}</b>님은 <b>{implode(', ',$logged_info->group_list)}</b>입니다.</li>
+									<li>{htmlspecialchars($logged_info->email_address)}</li>
+									<li><!--@if($logged_info->homepage)--><a href="{htmlspecialchars($logged_info->homepage)}" target="_blank" style="font-weight: normal;">{htmlspecialchars($logged_info->homepage)}</a><!--@else-->등록된 홈페이지가 없습니다.<!--@end--></li>
+								</ul>
+							</div>
+
+							<div class="info2">
+								<ul>
+
+									{@
+										$oPointModel = &getModel('point');
+										$oModuleModel = &getModel('module');
+										$config = $oModuleModel->getModuleConfig('point');
+										$point = $oPointModel->getPoint($logged_info->member_srl);
+										$level = $oPointModel->getLevel($point, $config->level_step);
+										$nextpoint = $config->level_step[$level+1];
+										$prepoint = $config->level_step[$level];
+										$percent = round(($point-$prepoint)/($nextpoint-$prepoint)*100, 2);
+									}
+									<li>가입일 : {zdate($logged_info->regdate, "Y년 m월 d일 (H시 d분)")}</li>
+									<li>마지막접속 : {zdate($logged_info->last_login, "Y년 m월 d일 (H시 d분)")} </li>
+									<li>
+										포인트 : {$point}<!--@if($nextpoint!=0)-->/{$nextpoint} ({$percent}%)<!--@endif--> /
+										레벨: {$level} <span class="member_{$logged_info->member_srl}"></span>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="content">
+							<ul>
+							<li loop="$logged_info->menu_list=>$key, $val"><a href="{getUrl('act',$key,'member_srl','')}">{Context::getLang($val)}</a></li>
+							</ul>
+						</div>
+						<div class="footer">
+							<ul>
+								<li><a href="{getUrl('act','dispMemberLogout')}">{$lang->cmd_logout}</a></li>
+								<li cond="$grant->manager"><a href="{getUrl('act','dispLayoutAdminEdit','layout_srl',$layout_info->layout_srl)}" title="{$lang->cmd_edit}">{$lang->cmd_edit}</a></li>
+								<li cond="$grant->manager"><a href="{getUrl('act','dispLayoutAdminModify','layout_srl',$layout_info->layout_srl)}">{$lang->cmd_layout_management}</a></li>
+								<li cond="$grant->manager"><a href="{getUrl('','module','admin')}" target="_blank">대쉬보드</a></li>
+							</ul>
+						</div>
+					</div>
+					<!--// [끝] 내정보 -->
+				</li>
+				<li><a href="{getUrl('act','dispMemberLogout')}"><img src="./img/ico_logout.png" alt="{$lang->cmd_logout}" title="{$lang->cmd_logout}"></a></li>
+
+				</ul>
+
+
+			</div>
+
+		<!--@end-->
+			<ul style="display: none;">
+
+				<li style="display: none;"><label for="login_field">Username or Email</label><input autocapitalize="off" autofocus="autofocus" name="login" tabindex="1" type="text"  placeholder="Username or Email" /></li>
+				<li style="display: none;"><label for="login_field">Password</label><input name="password" tabindex="2" type="password"  placeholder="Password" /></li>
+				<li><img src="./img/ico_join.png" alt="회원가입" title="회원가입하기"></li>
+				<li><img src="./img/ico_login.png" alt="로그인" title="로그인하기"></li>
+				<li style="display: none;"><img src="./img/ico_warning.png" alt="회원가입" title="회원가입"></li>
+			</ul>
+		</div>
+		<!--// [끝] 로그인 -->
+		</div>
+
+
+
+
+
+		<!-- [시작] 로컬메뉴 -->
+		<nav class="lnb clearfix" loop="$gnb->list=>$key,$val" cond="$val['selected']">
+			<div class="clearfix">
+			<span><b>이온디 <a loop="$gnb->list=>$key1,$val1" cond="$val1['selected']" href="{$val1['href']}" class="on">{$val1['link']}</a></b> 입니다.</span>
+			<ul cond="$val['list']"><li loop="$val['list']=>$key1,$val1" cond="$val1['link']"><a href="{$val1['href']}" class="<!--@if($val1['selected'])-->on<!--@end-->" target="_blank"|cond="$val['open_window']=='Y'">{$val1['link']}</a></li></ul>
+			</div>
+			<div class="wnb clearfix" cond="$conf->slogan">{$conf->slogan}</div>
+
+			<div class="lnb2-wrap">
+			<ul loop="$val['list']=>$key1,$val1"  cond="$val1['selected']">
+				<li loop="$val1['list']=>$key2,$val2" cond="$val2['link']" class="<!--@if($val2['selected'])-->on<!--@end-->"><a href="{$val2['href']}" target="_blank"|cond="$val1['open_window']=='Y'">{$val2['link']}</a></li>
+			</ul>
+			</div>
+
+		</nav>
+		<!-- [시작] 로컬메뉴 -->
+
+	</header><!--// [끝] 헤더-->
+
+
+
+	<!-- ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+																사이드바
+	──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+
+	<!-- [시작] 사이드바-->
+	<aside class="sidebar"></aside><!--// [끝] 사이드바-->
+
+	<!-- ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+																컨텐츠
+	──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+
+	<!-- [시작] 컨텐츠-->
+	<section class="contents">
+
+
+		<!--s2: 빵조각-->
+		<article class="breadcrumb"></article><!--// [끝] 빵조각-->
+
+		<!--s2: 커버-->
+		<load target="cover.html" /><!--// [끝] 커버-->
+
+
+
+		<!--s2: 본문-->
+		<article id="content" class="content">{$content}</article><!--// [끝] 본문-->
+
+		<!--s2: 매뉴얼-->
+		<load target="manual.html" /><!--// [끝] 매뉴얼-->
+
+		<!-- s2: Customer Service Bar -->
+		<nav id="csb"><ul><li loop="$csb->list=>$key1,$val1"><a href="{$val1['href']}"><span>{$val1['link']}</span></a></li></ul></nav>
+
+		<!--s2: 애드센스 뷰-->
+		<article class="ad_bottom">
+		<script type="text/javascript"><!--
+		google_ad_client = "ca-pub-7200623708996327";
+		/* 728x90, 작성됨 08. 6. 22 */
+		google_ad_slot = "8704456539";
+		google_ad_width = 728;
+		google_ad_height = 90;
+		//-->
+		</script>
+		<script type="text/javascript"
+		src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+		</script>
+		</article><!--// [끝] 에드센스 뷰-->
+
+		<!--s2: 갤러리-->
+		<article class="gallery"></article><!--// [끝] 갤러리-->
+
+		<!--s2: 사이트맵-->
+		<load target="sitemap.html" /><!--// [끝] 사이트맵-->
+
+	</section><!--// [끝] 컨텐츠-->
+
+	<!-- ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+																위젯바
+	──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+	<!-- [시작] 위젯바-->
+	<aside class="widgetbar"></aside><!--// [끝] 위젯바-->
+
+	<!-- ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+																푸터
+	──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+	<!-- [시작] 푸터-->
+	<footer class="footer">
+
+		<!-- [시작] 사이트맵 -->
+		<div class="sitemap-wrapper clearfix" style="display: none;">
+			<!-- [시작] 빵조각 -->
+			<div class="breadcrumb">
+				<ul>
+					<li><img src="{$tpl_path}/img/ico_home.png" alt="홈" title="홈으로 바로가기" /></li>
+					<li>breadcrumb</li>
+				</ul>
+				<ul id="location">
+					<li class="location c_0"><a class="location_home" href="{$layout_info->index_url}"><span class="blank"><!--@if(!$layout_info->index_name)-->Gray Style<!--@else-->{$layout_info->index_name}<!--@end--></span></a></li>
+					<!--@if($loc > 0)--><!--@for($i=0; $i<$loc; $i++)-->
+					<li class="location c_{$i+1}"><a href="{$location[$i]['href']}">{$location[$i]['text']}</a></li>
+					<!--@end--><!--@end-->
+				</ul>
+
+			</div>
+
+			<!-- [끝] 빵조각 -->
+
+			<!-- [시작] 빵조각 -->
+			<div class="sitemap">
+				<ul>
+					<li loop="$gnb->list=>$key1,$val1">
+						<a href="{$val1['href']}" style="white-space: nowrap;">{$val1['link']}</a>
+							<ul>
+								<li loop="$val1['list']=>$key2,$val2" class="li2"><a href="{$val2['href']}">{$val2['link']}</a></li>
+							</ul>
+					</li>
+				</ul>
+			</div>
+			<!-- [끝] 빵조각 -->
+		</div>
+		<!-- [끝] 사이트맵 -->
+
+		<!-- [시작] 하단메뉴 -->
+			<nav class="fnb">
+			<span><a href="#" style="color: #FFF; text-decoration: none;">▶ Top</a></span>
+				<ul>
+				<!--@foreach($fnb->list as $key => $val)-->
+					<!--@if($val['link'])-->
+						<!--@if($val['selected'])-->
+							{@ $menu_1st = $val }
+						<!--@end-->
+					<li <!--@if($val['selected'])-->class="on"<!--@end-->><a href="{$val['href']}" <!--@if($val['open_window']=='Y')-->onclick="window.open(this.href);return false;"<!--@end-->>{$val['link']}</a></li>
+					<!--@end-->
+				<!--@end-->
+
+				</ul>
+
+			</nav>
+		<!--// [끝] 하단메뉴 -->
+
+
+		<!-- [시작] 저작권 -->
+		<div class="copyright-wrap">
+		<h2><img src="./img/logo_foot.png" alt="인터넷에 집을 지어드립니다" title="인터넷에 집을 지어드립니다"></h2>
+		<address>
+			 Copyright &copy; 2013 eond.com All rights reserved.
+		</address>
+		</div>
+		<!--// [끝] 저작권 -->
+	</footer><!--// [끝] 푸터-->
+
+</div><!--// [끝] 바디-->
+
+<!-- ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+												사이트 끝
+ ─────────── ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->

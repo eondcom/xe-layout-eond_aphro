@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.2">
+    <title xml:lang="ko">[이온디] Aphro</title>
+	<title xml:lang="en">Eond Aphro</title>
+    <description xml:lang="ko">
+	# 이온디 Aphro ver.0.7. (마지막 업데이트일 : 2014년 1월 29일)
+	# 구매문의 : http://look.eond.com
+    </description>
+	<description xml:lang="en">
+	# Website : http://eond.com/look
+    </description>
+    <version>0.7</version>
+    <date>2014-01-29</date>
+	<link>http://eond.com/</link>
+    <author email_address="eond@eond.com" link="http://eond.com">
+        <name>이온디</name>
+    </author>
+    <menus>
+		<menu name="main_menu" maxdepth="3" default="true">
+            <title xml:lang="ko">메인 메뉴</title><title xml:lang="en">Main Navigation Bar</title>
+        </menu>
+		<menu name="snb">
+			<title xml:lang="ko">사이트 메뉴</title><title xml:lang="en">Site Navigation Bar</title>
+			<maxdepth>1</maxdepth>
+		</menu>
+		<menu name="csb">
+			<title xml:lang="ko">커스토머서비스바</title><title xml:lang="en">Customer Service Bar</title>
+			<maxdepth>1</maxdepth>
+		</menu>
+		<menu name="fnb">
+			<title xml:lang="ko">하단 링크</title><title xml:lang="en">Useful Links</title>
+			<maxdepth>1</maxdepth>
+		</menu>
+	</menus>
+	
+    <extra_vars>
+	<group>
+	<title xml:lang="ko">홈페이지 기본정보(*)</title><title xml:lang="en">Website Information</title>
+        <var name="url" type="text">
+            <title xml:lang="ko">홈페이지 URL</title><title xml:lang="en">Website URL</title>
+            <description>로고를 클릭시에 이동할 홈페이지 URL을 입력해 주세요.</description>
+		</var>
+		<var name="site" type="text">
+			<title xml:lang="ko">홈페이지 이름</title><title xml:lang="en">Website Title</title>
+			<description>홈페이지 이름을 입력하세요.</description>
+		</var>
+		<var name="logo" type="image">
+            <title xml:lang="ko">홈페이지 로고</title><title xml:lang="en">Website Logo</title>
+            <description>로고 파일을 업로드해주세요.</description>
+        </var>
+		<var name="slogan" type="textarea">
+			<title xml:lang="ko">홈페이지 슬로건</title><title xml:lang="en">Website Slogan</title>
+			<description>본문 상단에 출력되는 홍보 문구를 입력해주세요. HTML 코드도 작성 가능합니다. ※추천 컬러 코드 : #AAAAAA(연한색), #FF6D11(강조색)</description>
+		</var>
+		<var name="bgimg" type="radio">
+			<title xml:lang="ko">배경 이미지</title><title xml:lang="en">Background Image</title>
+			<options value="dotted"><title xml:lang="ko">도트 패턴</title><title xml:lang="en">Dotted Pattern</title></options>
+			<options value="grid"><title xml:lang="ko">그리드 패턴</title><title xml:lang="en">Grid Pattern</title></options>
+
+			<description>배경이미지를 설정합니다.</description>
+		</var>
+	</group>
+
+	<group>
+	<title xml:lang="ko">위젯 설정</title><title xml:lang="en">Widgets Setting</title>
+		<var name="forum" type="text">
+		<title xml:lang="ko">포럼식 메뉴</title>
+			<description>포럼식 메뉴가 나타나는 메뉴의 순서를 적어주세요. 사용하지 않으실 때는 꼭 번호를 지워주세요.</description>
+		</var>
+		<var name="forum_sub" type="text">
+		<title xml:lang="ko">포럼식 하위 메뉴 갯수</title>
+			<description>포럼식 메뉴가 나타나는 메뉴의 하위 메뉴 갯수를 꼭 적어주세요.</description>
+		</var>
+		<var name="wdg" type="checkbox">
+		<title xml:lang="ko">위젯 스위치</title><title xml:lang="en">Widget Switch</title>
+			<options value="default" disabled="disabled" checked="checked"><title xml:lang="ko">무조건 체크</title></options>
+			<options value="slogan"><title xml:lang="ko">슬로건</title><title xml:lang="en">Slogan</title></options>
+			<options value="slider"><title xml:lang="ko">슬라이드 이미지</title><title xml:lang="en">Slider</title></options>
+			<options value="post" ><title xml:lang="ko">최근 포스트</title><title xml:lang="en">Recent Post</title></options>
+			<options value="project" ><title xml:lang="ko">최근 프로젝트</title><title xml:lang="en">Recent Project</title></options>
+			<description>사용할 위젯을 체크하세요. 체크를 해제하면 위젯을 감춥니다. (단, '무조건 체크' 항목은 무조건 체크해두고 사용하세요. 체크해제 시 오류 발생.)</description>
+		</var>
+		<var name="slider_img1" type="image"><title xml:lang="ko">첫번째 슬라이드 이미지</title><title xml:lang="en">1st Slide Image</title>
+		<description>1000*400 사이즈의 이미지를 권장합니다. 모든 이미지의 사이즈는 동일하게 맞춰주세요.</description>
+		</var>
+		<var name="slider_img2" type="image"><title xml:lang="ko">두번째 슬라이드 이미지</title><title xml:lang="en">2nd Slide Image</title>
+		</var>
+		<var name="slider_img3" type="image"><title xml:lang="ko">세번째 슬라이드 이미지</title><title xml:lang="en">3rd Slide Image</title>
+		</var>
+		<var name="slider_p1" type="textarea"><title xml:lang="ko">첫번째 슬라이드 설명</title><title xml:lang="en">1st Slide Caption</title></var>
+		<var name="slider_p2" type="textarea"><title xml:lang="ko">두번째 슬라이드 설명</title><title xml:lang="en">1st Slide Caption</title></var>
+		<var name="slider_p3" type="textarea"><title xml:lang="ko">세번째 슬라이드 설명</title><title xml:lang="en">1st Slide Caption</title></var>
+
+		<var name="tag" type="text">
+		<title xml:lang="ko">태그 위젯 선택 모듈 번호</title><title xml:lang="en">Tag Widget Module Number</title>
+		<description>태그 위젯으로 나타나는 게시판의 모듈 번호를 입력하세요. ,(쉼표)로 여러 개의 모듈을 선택하여 사용 가능합니다. 입력하지 않을 경우 모든 게시판을 대상으로 합니다. ('게시판 관리 > 편집 > 설정'에서 모듈 번호를 알 수 있습니다.)</description>
+		</var>
+		<var name="article" type="text">
+		<title xml:lang="ko">최근 글 모듈 번호</title><title xml:lang="en">Latest Posts</title>
+		<description>최근 글 위젯에 나타나는 게시판의 모듈 번호를 입력하세요. ,(쉼표)로 여러 개의 모듈을 선택하여 사용 가능합니다. 입력하지 않을 경우 모든 게시판을 대상으로 합니다. ('게시판 관리 > 편집 > 설정'에서 모듈 번호를 알 수 있습니다.)</description>
+		</var>
+        <var name="comment" type="text">
+            <title xml:lang="ko">최근 댓글 모듈 번호</title><title xml:lang="en">Latest Comments</title>
+			<description>최근 댓글 위젯에 나타나는 게시판의 모듈 번호를 입력하세요. ,(쉼표)로 여러 개의 모듈을 선택하여 사용 가능합니다. 입력하지 않을 경우 모든 게시판을 대상으로 합니다. ('게시판 관리 > 편집 > 설정'에서 모듈 번호를 알 수 있습니다.)</description>
+        </var>
+		<var name="twitter" type="textarea">
+			<title xml:lang="ko">트위터 위젯</title><title xml:lang="en">Twitter Widget</title>
+			<description>트위터 위젯 만들기 https://twitter.com/settings/widgets/new (사용방법안내 http://eond.com/manual/341253) </description>
+		</var>
+		<var name="address" type="text">
+			<title xml:lang="ko">저작권 표시</title><title xml:lang="en">Copyright</title>
+			<description>저작권 이름을 표시해주세요.</description>
+		</var>
+		
+	</group>
+
+	<group>
+	<title xml:lang="ko">레이아웃 설정(구현 예정)</title><title xml:lang="en">Layout Configuration</title>
+		<var name="adminbar" type="checkbox"><title>어드민바</title>
+			<options value="y"><title xml:lang="ko">출력</title><title xml:lang="en">view</title></options>
+			<description>어드민바는 프레임 상단에 나타나는 기본 바입니다.</description>
+		</var>
+		<var name="layout_position" type="select">
+            <title xml:lang="ko">레이아웃 구조</title><title xml:lang="en">Layout position</title>
+			<options value="c"><title xml:lang="ko">본문만</title><title xml:lang="en">Content Only</title></options>
+			<options value="ce"><title xml:lang="ko">본문+칼럼</title><title xml:lang="en">Content + Column　</title></options>
+			<options value="ec"><title xml:lang="ko">칼럼+본문</title><title xml:lang="en">Column + Content　</title></options>
+        </var>
+		
+		<var name="con_width" type="text">
+            <title xml:lang="ko">컨텐츠 영역 너비</title><title xml:lang="en">Content Width</title>
+            <description>컨텐츠 너비에 따라 전체 너비가 설정됩니다. 칼럼 너비는 수정 불가한 고정 너비입니다.</description>
+        </var>
+	</group>
+
+
+	</extra_vars>
+
+</layout>

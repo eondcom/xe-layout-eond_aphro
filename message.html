@@ -1,0 +1,95 @@
+<style type="text/css">
+.header li.readed {border-bottom: 1px solid #F6F6F6;padding: 10px; width: 100%; box-sizing:border-box}
+.header li:last-child {border-bottom: 0;}
+.header div.message_reply {border: 0px solid red; float: right; width: 35px; height: 50px; text-align: center; vertical-align: middle;}
+.header div.message_reply button.ico_reply {background: ('./img/ico_reply.png') no-repeat;}
+</style>
+<div class="top">
+<h2>쪽지함</h2><div class="tg_close" title="Close this layer"><img src="./img/btn_close_pop.gif" alt="닫기" title="닫기"></div>
+</div>
+<load target="js/communication.js" />
+<block cond="$is_logged">
+{@
+$oDB = &DB::getInstance();
+$query = $oDB->_query('select * from xe_member_message where receiver_srl = '.$logged_info->member_srl.' AND message_type = "R" ORDER BY  regdate DESC limit 0, 5');
+$result = $oDB->_fetch($query);
+$output = executeQueryArray('addons.message_alarm.getMessageCount', $aobj);
+}
+<script cond="count($output->data) && !Mobile::isMobileCheckByAgent()">
+jQuery(function($){$(".navbar a").hover(function(){$("#message_list>a").tooltip('hide');}).tooltip({placement:"bottom",trigger:"manual",title:"{count($output->data)}{$lang->tb_not_readed_message}"}).delay(500).queue(function(){$("#message_list>a").tooltip('show');}).delay(5000).queue(function(){$("#message_list>a").tooltip('hide');})});
+</script>
+</block>
+<!--s:MessageBox-->
+<div class="header" style="padding: 0; width: 100%;">
+	
+	<ul class="dropdown-menu" style="min-width:240px;">
+	<!--@if(is_array($result)==true)-->
+		
+		<!--@foreach($result as $key=>$val)-->
+		{@
+		$oMemberModel =& getModel('member');
+		$member_info = $oMemberModel->getMemberInfoByMemberSrl($val->sender_srl);
+		}
+		<li class="readed"><!-- /* padding-bottom: 10px; width: 100%;border: 0px solid red;*/ -->
+		<a href="{getURL('act','dispCommunicationMessages','message_srl',$val->message_srl)}" class="popover-left" title="{strip_tags($val->title)}" data-content="{iconv_substr(strip_tags($val->content),0,100,'UTF-8')}"  style="outline-style:none">
+			
+			<div class="photo" style="float: left; width: 38px; height: 38px; overflow: hidden;border: 1px solid #EEE;">
+			<!--@if($member_info->profile_image->src)-->
+			<img src="{$member_info->profile_image->src}" width="38px" height="38px" class="img-polaroid profile_img"  alt="프로필 이미지" />
+			<!--@else-->
+			<img src="./img/profile.gif" class="img-polaroid profile_img" alt="프로필 이미지" />
+			<!--@end-->
+			</div>
+
+			<div class="info" style="float: left; width: 150px; border: 0px solid red;">
+				
+					<span class="nickname">
+					{$member_info->nick_name}
+					</span>
+					<span class="title" style="font-weight: normal;">
+					{strip_tags($val->title)}...
+					</span>
+				
+			</div>
+			<div class="message_reply" style="vertical-align: middle;line-height: 50px;">
+			<img src="{$tpl_path}img/ico_reply.png" onclick="doSendMessage('{$member_info->member_srl}','{$val->message_srl}');return false;">
+			<!--<input type="image" src="{$tpl_path}img/ico_reply.png" ></button> {$lang->cmd_reply_message} -->
+			</div>
+
+		</a>
+		</li>
+		<!--@end-->
+
+	<!--@else-->
+		{@
+		$oMemberModel =& getModel('member');
+		$member_info = $oMemberModel->getMemberInfoByMemberSrl($result->sender_srl);
+		}
+		<li>
+		<a href="{getURL('act','dispCommunicationMessages','message_srl',$result->message_srl)}" class="popover-left readed" rel="popover" title="{strip_tags($result->title)}" data-content="{substr(strip_tags($result->content),0,100)}" >
+			<!--@if($member_info->profile_image->src)-->
+			<img src="{$member_info->profile_image->src}" class="img-polaroid profile_img" />1
+			<!--@else-->
+			<img src="./img/profile.gif" class="img-polaroid profile_img" />2
+			<!--@end-->
+		<span class="content">
+		<span class="nickname">
+		{$member_info->nick_name}
+		</span>
+		<span class="title">
+		{strip_tags($result->title)}
+		</span>
+		</span>
+		<span class="clear" style="display:block"></span>
+		<button type="button" onclick="doSendMessage('{$member_info->member_srl}','{$val->message_srl}');return false;" class="btn btn-mini reply_message"><i class="icon-share-alt"></i> {$lang->cmd_reply_message}2</button>
+		<button type="button" class="btn btn-mini"><i class="icon-eye-open"></i> {$lang->tb_more}1</button>
+		<span class="clear" style="display:block"></span>
+		</a>
+		</li>
+	<!--@end-->
+	</ul>
+
+</div>
+<!-- e:MessageBox-->
+
+<div class="footer"><ul><li><a href="{getURL('act','dispCommunicationMessages')}">쪽지함</a></li></ul></div>
